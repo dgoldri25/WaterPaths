@@ -27,7 +27,7 @@ FallsLakeMinEnvFlowControl::FallsLakeMinEnvFlowControl(
         week_interval(min_env_control.week_interval) ,
         base_min_env_flows(min_env_control.base_min_env_flows),
         base_min_gage_flows(min_env_control.base_min_gage_flows),
-        neuse_river_intake_id(min_env_control.neuse_river_intake_id),
+        neuse_river_intake_id(1),
         crabtree(Catchment(min_env_control.crabtree)) {}
 
 double FallsLakeMinEnvFlowControl::getRelease(int week) {
@@ -43,11 +43,12 @@ double FallsLakeMinEnvFlowControl::getRelease(int week) {
         min_gage_flow = base_min_gage_flows[1];
     }
 
-    double neuse_outflow =
-            water_sources[neuse_river_intake_id]->getTotal_outflow();
+    //double neuse_outflow =
+    //        water_sources[1]->getTotal_outflow();
+
 
     return max(base_release,
-               min_gage_flow - max(0., neuse_outflow) -
+               min_gage_flow  -
                crabtree.getStreamflow(week));
 }
 

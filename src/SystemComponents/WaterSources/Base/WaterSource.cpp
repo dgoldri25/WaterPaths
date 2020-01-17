@@ -676,6 +676,10 @@ double WaterSource::getSupplyCapacity() {
         return capacity - allocated_capacities[wq_pool_id];
 }
 
+double WaterSource::getTotalCapacity(){
+    return capacity;
+}
+
 /**
  * Most sources will not have different allocations, so by default this
  * function will return the total capacity. If a source is to have multiple
@@ -811,3 +815,6 @@ double WaterSource::getTotalTreatmentCapacity() const {
     return total_treatment_capacity;
 }
 
+double WaterSource::getWqFraction(){
+    return (allocated_capacities[wq_pool_id]) / capacity;
+}

@@ -365,9 +365,9 @@ Simulation::runFullSimulation(unsigned long n_threads, double *vars) {
                 // DO NOT change the order of the steps. This would mess up
                 // important dependencies.
                 // Calculate long-term risk-of-failre if current week is first week of the year.
-                if (Utils::isFirstWeekOfTheYear(w))
-                    realization_model->setLongTermROFs(
-                            rof_model->calculateLongTermROF(w), w);
+                //if (Utils::isFirstWeekOfTheYear(w))
+                //    realization_model->setLongTermROFs(
+                //            rof_model->calculateLongTermROF(w), w);
                 // Calculate short-term risk-of-failure
                 realization_model->setShortTermROFs(
                         rof_model->calculateShortTermROF(w,

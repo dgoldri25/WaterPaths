@@ -66,7 +66,7 @@ public:
     const int id;
     const int number_of_week_demands;
     string name;
-    const double percent_contingency_fund_contribution;
+    double percent_contingency_fund_contribution;
     const double demand_buffer;
 
     Utility(

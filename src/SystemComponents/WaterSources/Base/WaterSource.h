@@ -146,6 +146,8 @@ public:
 
     virtual double getSupplyCapacity();
 
+    double getTotalCapacity();
+
     double getUpstream_source_inflow() const;
 
     double getDemand() const;
@@ -209,6 +211,8 @@ public:
     void checkAllocations(double total_allocated_fraction,
                           vector<int> &utilities_with_allocations,
                           vector<double> &allocated_fractions) const;
+
+    double getWqFraction();
 };
 
 

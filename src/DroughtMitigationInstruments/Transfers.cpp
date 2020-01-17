@@ -388,6 +388,25 @@ const vector<double> &Transfers::getAllocations() const {
 void Transfers::setRealization(unsigned long realization_id, const vector<double> &utilities_rdm,
                                const vector<double> &water_sources_rdm, const vector<double> &policy_rdm) {
 
+
+    //set transfer offsets here
+    int i = 0;
+    for (double &btt : buyers_transfer_triggers){
+        if (buyers_ids[i] < 3) {
+            btt += policy_rdm.at((unsigned long) buyers_ids[i] + 8);
+            if (btt < 0.01){
+                btt = 0.01;
+            };
+        }
+        else {
+            btt += policy_rdm.at((unsigned long) buyers_ids[i] + 7);
+            if (btt < 0.01){
+                btt = 0.01;
+            };
+        }
+        i+=1;
+    }
+
 }
 
 const double Transfers::getSourceTreatmentBuffer() const {

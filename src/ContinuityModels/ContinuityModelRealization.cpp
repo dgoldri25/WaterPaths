@@ -28,6 +28,50 @@ ContinuityModelRealization::ContinuityModelRealization(
         dmp->setRealization(realization_id, utilities_rdm, water_sources_rdm,
                             policy_rdm);
     }
+
+    // offset the jordan lake allocations
+    vector<double>  realization_JLA_allocations (n_utilities+1);
+
+    double adjusted_fraction;
+    double jl_storage_capacity = 14924.0 + 30825.0;
+    //double base_allocated_fraction;
+    double DV_allocation;
+    double sum_adjustments = 0;
+    double jl_supply_capacity = this->continuity_water_sources[6]->getSupplyCapacity();
+
+
+    // apply offsets
+    for (int JLA_id = 0; JLA_id < this->n_utilities; JLA_id++){
+        DV_allocation = this->continuity_water_sources[6]->getSupplyAllocatedFraction(JLA_id);
+
+        // convert to original decision variable
+        //DV_allocation = (base_allocated_fraction*jl_storage_capacity) /
+        //        (this->continuity_water_sources[6]->getSupplyCapacity());
+
+        // add offset from rdm input
+        DV_allocation += water_sources_rdm[JLA_id+51];
+
+
+        if (DV_allocation < 0){
+            DV_allocation = 0;
+        }
+
+        // convert back to fraction of JLA
+        adjusted_fraction = (DV_allocation * jl_supply_capacity) / jl_storage_capacity;
+        sum_adjustments += (water_sources_rdm[JLA_id+51]*this->continuity_water_sources[6]->getSupplyCapacity()) /
+                           jl_storage_capacity;
+
+        // add to vector of adjusted allocations
+        realization_JLA_allocations[JLA_id] = adjusted_fraction;
+    }
+
+    // add/remove the total sum of adjustments from the wq fraction
+    realization_JLA_allocations[n_utilities] = this->continuity_water_sources[6]->getWqFraction() - sum_adjustments;
+
+    // adjust the allocations using the resetAllocations function
+    this->continuity_water_sources[6]->resetAllocations(&realization_JLA_allocations);
+
+
 }
 
 ContinuityModelRealization::~ContinuityModelRealization() {

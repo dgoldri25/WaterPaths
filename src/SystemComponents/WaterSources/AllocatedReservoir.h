@@ -105,6 +105,9 @@ public:
     void distributeStoredVolume(vector<double> &demand_outflow,
                                 double total_upstream_inflow,
                                 double available_volume_new);
+
+
+    //void perturbSupplyAllocations(vector<double> perturbations);
 };
 
 

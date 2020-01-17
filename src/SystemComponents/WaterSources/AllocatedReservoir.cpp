@@ -494,3 +494,19 @@ double AllocatedReservoir::getSupplyAllocatedFraction(int utility_id) {
                                "be used for supply.");
     return supply_allocated_fractions[utility_id];
 }
+
+
+
+/*
+void AllocatedReservoir::perturbSupplyAllocations(vector<double> perturbations) {
+    double sum = 0;
+    for (int utility_id = 0; utility_id < allocated_fractions.size() -1; utility_id ++) {
+        supply_allocated_fractions[utility_id] += perturbations[utility_id];
+        sum += perturbations[utility_id];
+    }
+    // here i would update the WQ fraction, but I think i'll abandon this
+    if (sum > 0){
+        supply
+    }
+
+}*/

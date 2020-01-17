@@ -110,6 +110,8 @@ public:
 
     int getId() const;
 
+    void setId(int);
+
     double getInfraDiscountRate() const;
 };
 

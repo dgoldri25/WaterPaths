@@ -177,6 +177,11 @@ Utility::Utility(Utility &utility) :
             priority_draw_water_source,
             non_priority_draw_water_source);
 
+    utility.infrastructure_construction_manager.setId(id);
+   // infrastructure_construction_manager =
+   //         InfrastructureManager(id, {1},  {{1}}, .07, {1}, {1});
+
+
     // Create copies of sources
     water_sources.clear();
 }
@@ -325,6 +330,7 @@ void Utility::addWaterSource(WaterSource *water_source) {
 
     // If watersource is online and the utility owns some of its installed
     // treatment capacity, make it online.
+    infrastructure_construction_manager.setId(id);
     if (water_source->isOnline() && water_source->
             getAllocatedTreatmentCapacity(id) > 0) {
         infrastructure_construction_manager.addWaterSourceToOnlineLists(
@@ -672,6 +678,12 @@ Utility::setRealization(unsigned long r, const vector<double> &rdm_factors) {
     // Set peaking demand factor.
     weekly_peaking_factor = calculateWeeklyPeakingFactor
             (&demands_all_realizations.at(r));
+
+    // offset contingency fund
+    percent_contingency_fund_contribution += rdm_factors.at(id + 4);
+    if (percent_contingency_fund_contribution < 0){
+        percent_contingency_fund_contribution = 0;
+    }
 }
 
 vector<double> Utility::calculateWeeklyPeakingFactor(vector<double> *demands) {

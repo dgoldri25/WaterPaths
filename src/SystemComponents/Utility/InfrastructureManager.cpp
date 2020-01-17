@@ -538,3 +538,7 @@ double InfrastructureManager::getInfraDiscountRate() const {
     return infra_discount_rate;
 }
 
+void InfrastructureManager::setId(int newId){
+    id = newId;
+}
+

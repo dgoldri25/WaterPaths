@@ -2,7 +2,7 @@
 #include "Utils/QPSolver/QuadProg++.h"
 #include "Utils/Solutions.h"
 #include "Problem/PaperTestProblem.h"
-//#include "Problem/Triangle.h"
+#include "Problem/Triangle.h"
 #include "Utils/Utils.h"
 #include "InputFileParser/MasterSystemInputFileParser.h"
 #include "Problem/InputFileProblem.h"
@@ -242,7 +242,7 @@ int main(int argc, char *argv[]) {
             solutions_to_run_range = {standard_solution, standard_solution};
         }
 
-        problem_ptr = new PaperTestProblem(n_weeks, n_realizations,
+        problem_ptr = new Triangle(n_weeks, n_realizations,
                                            import_export_rof_table,
                                            system_io, rof_tables_directory,
                                            seed, n_threads,

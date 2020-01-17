@@ -157,6 +157,16 @@ void Restrictions::setRealization(unsigned long realization_id,
     for (double &sm : stage_multipliers) {
         sm *= policy_rdm.at((unsigned long) id);
     }
+    // add restriction offsets
+    //id is ID of policy, not utility! Also, stage is stage not ROF
+    for (double &st : stage_triggers) {
+        int offset_id = realization_utilities[0]->id + 4;
+        st += policy_rdm.at((unsigned long) offset_id);
+        if (st < 0.01){
+            st = 0.01;
+        };
+    }
+
 }
 
 const vector<double> &Restrictions::getStageMultipliers() const {
