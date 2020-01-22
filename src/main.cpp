@@ -1,11 +1,11 @@
 #include "SystemComponents/WaterSources/Base/WaterSource.h"
 #include "Utils/QPSolver/QuadProg++.h"
 #include "Utils/Solutions.h"
-#include "Problem/PaperTestProblem.h"
+//#include "Problem/PaperTestProblem.h"
 #include "Problem/Triangle.h"
 #include "Utils/Utils.h"
-#include "InputFileParser/MasterSystemInputFileParser.h"
-#include "Problem/InputFileProblem.h"
+//#include "InputFileParser/MasterSystemInputFileParser.h"
+//#include "Problem/InputFileProblem.h"
 
 #ifdef  PARALLEL
 #include "../Borg/borgms.h"
@@ -225,7 +225,7 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    if (!system_input_file.empty()) {
+    /*if (!system_input_file.empty()) {
         problem_ptr = new InputFileProblem(system_input_file);
         run_optimization = dynamic_cast<InputFileProblem *>(problem_ptr)->isOptimize();
         nfe = dynamic_cast<InputFileProblem *>(problem_ptr)->getNFunctionEvals();
@@ -234,7 +234,8 @@ int main(int argc, char *argv[]) {
 	c_num_obj = (int) dynamic_cast<InputFileProblem *>(problem_ptr)->getNObjectives();
 	seed = (int) dynamic_cast<InputFileProblem *>(problem_ptr)->getSeed();
 	c_num_constr = 0;
-    } else {
+     */
+   // } else {
         vector<int> solutions_to_run_range;
         if (last_solution != NON_INITIALIZED) {
             solutions_to_run_range = {first_solution, last_solution};
@@ -252,7 +253,7 @@ int main(int argc, char *argv[]) {
                                            n_sets, n_bs_samples, solution_file,
                                            solutions_to_run_range, plotting,
                                            print_objs_row);
-    }
+   // }
 
     // If Borg is not called, run in simulation mode
     if (!run_optimization) {

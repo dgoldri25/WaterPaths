@@ -380,8 +380,8 @@ void MasterDataCollector::printUtilityObjectivesToRowOutStream(
     calculateRestrictionFrequencyObjective(utility_restrictions,
                                            realizations_ran);
     // Infrastructure NPC
-    double inf_npc = ObjectivesCalculator::
-    calculateNetPresentCostInfrastructureObjective(u, realizations_ran);
+    //double inf_npc = ObjectivesCalculator::
+    //calculateNetPresentCostInfrastructureObjective(u, realizations_ran);
     // Peak Financial Cost
     double financial_cost = ObjectivesCalculator::
     calculatePeakFinancialCostsObjective(u, realizations_ran);
@@ -399,9 +399,9 @@ void MasterDataCollector::printUtilityObjectivesToRowOutStream(
               << setprecision(COLUMN_PRECISION)
               << restriction_freq
               // Infrastructure NPC
-              << setw(COLUMN_WIDTH * 2)
-              << setprecision(COLUMN_PRECISION)
-              << inf_npc
+              //<< setw(COLUMN_WIDTH * 2)
+              //<< setprecision(COLUMN_PRECISION)
+              //<< inf_npc
               // Peak Financial Cost
               << setw(COLUMN_WIDTH * 2)
               << setprecision(COLUMN_PRECISION)
@@ -414,7 +414,7 @@ void MasterDataCollector::printUtilityObjectivesToRowOutStream(
 
     objectives.push_back(reliability);
     objectives.push_back(restriction_freq);
-    objectives.push_back(inf_npc);
+    //objectives.push_back(inf_npc);
     objectives.push_back(financial_cost);
     objectives.push_back(worse_cost);
 }
@@ -435,9 +435,9 @@ MasterDataCollector::calculatePrintObjectives(string file_name, bool print) {
                   << "Reliability"
                   << setw(COLUMN_WIDTH * 2) << "Restriction Freq."
                   //              << setw(COLUMN_WIDTH * 2) << "Jordan Lake Alloc."
-                  << setw(COLUMN_WIDTH * 2) << "Infrastructure NPC"
+                  //<< setw(COLUMN_WIDTH * 2) << "Infrastructure NPC"
                   << setw(COLUMN_WIDTH * 2) << "Peak Financial Cost"
-                  << setw(COLUMN_WIDTH * 2) << "Worse Case Costs" << endl;
+                  << setw(COLUMN_WIDTH * 2) << "Worst Case Costs" << endl;
 
         for (auto &u : utility_collectors) {
             printUtilityObjectivesToRowOutStream(u, outStream, objectives);
@@ -472,9 +472,9 @@ MasterDataCollector::calculatePrintObjectives(string file_name, bool print) {
             objectives.push_back
                     (ObjectivesCalculator::calculateRestrictionFrequencyObjective(
                             utility_restrictions, realizations_ran));
-            objectives.push_back
-                    (ObjectivesCalculator::calculateNetPresentCostInfrastructureObjective(
-                            u, realizations_ran));
+            //objectives.push_back
+            //        (ObjectivesCalculator::calculateNetPresentCostInfrastructureObjective(
+            //                u, realizations_ran));
             objectives.push_back
                     (ObjectivesCalculator::calculatePeakFinancialCostsObjective(
                             u, realizations_ran));

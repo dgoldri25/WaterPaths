@@ -208,10 +208,10 @@ void InsuranceStorageToROF::setRealization(unsigned long realization_id, const v
         dmp->setRealization(realization_id, utilities_rdm, water_sources_rdm,
                             policy_rdm);
     }
-    /*int i = 0;
+    int i = 0;
     for (double it : rof_triggers){
         it += policy_rdm.at(i+11);
-    }*/
+    }
 }
 
 /**

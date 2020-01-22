@@ -390,6 +390,7 @@ void Transfers::setRealization(unsigned long realization_id, const vector<double
 
 
     //set transfer offsets here
+
     int i = 0;
     for (double &btt : buyers_transfer_triggers){
         if (buyers_ids[i] < 3) {

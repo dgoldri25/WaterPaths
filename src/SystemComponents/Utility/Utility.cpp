@@ -680,10 +680,12 @@ Utility::setRealization(unsigned long r, const vector<double> &rdm_factors) {
             (&demands_all_realizations.at(r));
 
     // offset contingency fund
+
     percent_contingency_fund_contribution += rdm_factors.at(id + 4);
     if (percent_contingency_fund_contribution < 0){
         percent_contingency_fund_contribution = 0;
     }
+
 }
 
 vector<double> Utility::calculateWeeklyPeakingFactor(vector<double> *demands) {
