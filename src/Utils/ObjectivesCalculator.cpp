@@ -155,6 +155,9 @@ double ObjectivesCalculator::calculatePeakFinancialCostsObjective(
     double realizations_year_cont_fund_contribution = 0;
     double realizations_year_gross_revenue = 1e-6;
     double realizations_year_insurance_contract_cost = 0;
+    double realization_year_drought_mitigation_cost = 0;
+    double realization_year_insurance_payout = 0;
+    double realization_year_recouped_loss_price_surcharge = 0;
     vector<double> year_financial_costs;
     vector<double> realization_financial_costs(utility_data.size(), 0);
 
@@ -173,14 +176,26 @@ double ObjectivesCalculator::calculatePeakFinancialCostsObjective(
                     utility_data[r]->getGross_revenues()[w];
             realizations_year_insurance_contract_cost +=
                     utility_data[r]->getInsurance_contract_cost()[w];
+            realization_year_drought_mitigation_cost +=
+                    utility_data[r]->getDrought_mitigation_cost()[w];
+            realization_year_insurance_payout +=
+                    utility_data[r]->getInsurance_payout()[w];
+            realization_year_recouped_loss_price_surcharge +=
+                    utility_data[r]->getRecouped_loss_price_surcharge()[w];
+
 
             /// if last week of the year, close the books and calculate
             /// financial cost for the year.
+            //FIXME: double check this, but i think it's kosher (need to add back drought mitigation
+            //FIXME: then remove insurance payout and surcharges
             if (Utils::isFirstWeekOfTheYear(w + 1)) {
                 year_financial_costs[y] +=
                         (realizations_year_debt_payment +
                          realizations_year_cont_fund_contribution +
-                         realizations_year_insurance_contract_cost) /
+                         realizations_year_insurance_contract_cost +
+                         2 * realization_year_drought_mitigation_cost +
+                         2 * realization_year_insurance_payout +
+                         2 * realization_year_recouped_loss_price_surcharge) /
                         realizations_year_gross_revenue;
                 /// update year count.
                 y++;
@@ -190,6 +205,8 @@ double ObjectivesCalculator::calculatePeakFinancialCostsObjective(
                 realizations_year_cont_fund_contribution = 0;
                 realizations_year_gross_revenue = 1e-6;
                 realizations_year_insurance_contract_cost = 0;
+                realization_year_drought_mitigation_cost = 0;
+                realization_year_insurance_payout = 0;
             }
         }
         /// store highest year cost as the cost financial cost of the realization.

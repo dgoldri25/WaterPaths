@@ -177,6 +177,7 @@ void UtilitiesDataCollector::collect_data() {
     unfulfilled_demand.push_back(utility->getUnfulfilled_demand());
     net_stream_inflow.push_back(utility->getNet_stream_inflow());
     total_treatment_capacity.push_back(utility->getTotal_treatment_capacity());
+    recouped_loss_price_surcharge.push_back(utility->getRecouped_loss_price_surcharge());
 
 //    checkForNans();
 
@@ -286,4 +287,12 @@ const vector<double> &UtilitiesDataCollector::getLt_rof() const {
 
 const vector<double> &UtilitiesDataCollector::getRestricted_demand() const {
     return restricted_demand;
+}
+
+const vector<double> &UtilitiesDataCollector::getInsurance_payout() const {
+    return insurance_payout;
+}
+
+const vector<double> &UtilitiesDataCollector::getRecouped_loss_price_surcharge() const {
+    return recouped_loss_price_surcharge;
 }

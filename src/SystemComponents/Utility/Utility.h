@@ -55,6 +55,7 @@ private:
     double bond_term_multiplier = 1.;
     double bond_interest_rate_multiplier = 1.;
     double max_capacity = 0;
+    double recouped_loss_price_surcharge;
 
     /// Infrastructure cost
     double current_debt_payment = 0;
@@ -221,6 +222,8 @@ public:
     const InfrastructureManager &getInfrastructure_construction_manager() const;
 
     double getDemand_offset() const;
+
+    double getRecouped_loss_price_surcharge() const;
 };
 
 

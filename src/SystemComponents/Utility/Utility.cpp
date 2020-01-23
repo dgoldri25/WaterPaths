@@ -491,7 +491,7 @@ void Utility::updateContingencyFundAndDebtService(
     double revenue_losses = lost_demand_vol_sales * unrestricted_price;
     double transfer_costs = demand_offset * (offset_rate_per_volume -
                                              unrestricted_price);
-    double recouped_loss_price_surcharge =
+    recouped_loss_price_surcharge =
             restricted_demand * (current_price - unrestricted_price);
 
     // contingency fund cannot get negative.
@@ -840,6 +840,10 @@ double Utility::getUnfulfilled_demand() const {
 
 double Utility::getNet_stream_inflow() const {
     return net_stream_inflow;
+}
+
+double Utility::getRecouped_loss_price_surcharge() const {
+    return recouped_loss_price_surcharge;
 }
 
 const InfrastructureManager &

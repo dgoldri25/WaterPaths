@@ -495,6 +495,14 @@ double AllocatedReservoir::getSupplyAllocatedFraction(int utility_id) {
     return supply_allocated_fractions[utility_id];
 }
 
+/*
+void AllocatedReservoir::setSupplyAllocations(vector<double> *new_allocated_fractions) {
+    for(unsigned long i = 0; i < utilities_with_allocations.size(); ++i){
+        supply_allocated_fractions[i] = new_allocated_fractions->at(i);
+    }
+}
+ */
+
 
 
 /*

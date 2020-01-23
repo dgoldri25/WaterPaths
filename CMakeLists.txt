@@ -66,6 +66,8 @@ set(SOURCE_FILES
         src/SystemComponents/WaterSources/ReservoirExpansion.h
         src/SystemComponents/WaterSources/WaterReuse.cpp
         src/SystemComponents/WaterSources/WaterReuse.h
+        src/SystemComponents/WaterSources/JointTreatmentCapacityExpansion.cpp
+        src/SystemComponents/WaterSources/JointTreatmentCapacityExpansion.h
         src/DataCollector/Base/DataCollector.cpp
         src/DataCollector/Base/DataCollector.h
         src/DataCollector/AllocatedReservoirDataCollector.cpp
@@ -119,8 +121,8 @@ set(SOURCE_FILES
         src/SystemComponents/Bonds/BalloonPaymentBond.h
         src/SystemComponents/Bonds/FloatingInterestBalloonPaymentBond.cpp
         src/SystemComponents/Bonds/FloatingInterestBalloonPaymentBond.h
-        src/systemComponents/WaterSources/JointTreatmentCapacityExpansion.h
-        src/systemComponents/WaterSources/JointTreatmentCapacityExpansion.cpp
+        #src/systemComponents/WaterSources/JointTreatmentCapacityExpansion.h
+        #src/systemComponents/WaterSources/JointTreatmentCapacityExpansion.cpp
         src/main.cpp)
 
         #src/InputFileParser/Base/WaterSourceParser.cpp

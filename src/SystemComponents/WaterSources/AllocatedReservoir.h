@@ -106,6 +106,7 @@ public:
                                 double total_upstream_inflow,
                                 double available_volume_new);
 
+    //void setSupplyAllocations(vector<double> *new_allocated_fractions) override;
 
     //void perturbSupplyAllocations(vector<double> perturbations);
 };

@@ -29,6 +29,7 @@ private:
     vector<double> unfulfilled_demand;
     vector<double> net_stream_inflow;
     vector<double> total_treatment_capacity;
+    vector<double> recouped_loss_price_surcharge;
     vector<vector<int>> pathways;
     const Utility *utility;
 
@@ -75,6 +76,10 @@ public:
     const vector<double> &getLt_rof() const;
 
     const vector<double> &getRestricted_demand() const;
+
+    const vector<double> &getInsurance_payout() const;
+
+    const vector<double> &getRecouped_loss_price_surcharge() const;
 
     void checkForNans() const;
 };

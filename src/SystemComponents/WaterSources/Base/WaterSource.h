@@ -192,6 +192,8 @@ public:
 
     virtual double getSupplyAllocatedFraction(int utility_id);
 
+    //virtual void setSupplyAllocations(vector<double> *new_supply_allocations);
+
     Bond &getBond(int utility_id);
 
     void checkForInputErrorsConstruction();
