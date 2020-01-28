@@ -43,7 +43,7 @@ ContinuityModelRealization::ContinuityModelRealization(
 
 
     // apply offsets
-/*
+
     for (int JLA_id = 0; JLA_id < this->n_utilities; JLA_id++){
         DV_allocation = this->continuity_water_sources[6]->getSupplyAllocatedFraction(JLA_id);
 
@@ -75,7 +75,7 @@ ContinuityModelRealization::ContinuityModelRealization(
     // adjust the allocations using the resetAllocations function
     this->continuity_water_sources[6]->resetAllocations(&realization_JLA_allocations);
     //this->continuity_water_sources[6]->setSupplyAllocations(&adjusted_supply_allocations);
-    */
+
 
 
 
