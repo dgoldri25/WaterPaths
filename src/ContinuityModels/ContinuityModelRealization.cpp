@@ -30,7 +30,7 @@ ContinuityModelRealization::ContinuityModelRealization(
     }
 
     // offset the jordan lake allocations
-
+    /*
     vector<double>  realization_JLA_allocations (n_utilities+1);
 
     double adjusted_fraction;
@@ -75,7 +75,7 @@ ContinuityModelRealization::ContinuityModelRealization(
     // adjust the allocations using the resetAllocations function
     this->continuity_water_sources[6]->resetAllocations(&realization_JLA_allocations);
     //this->continuity_water_sources[6]->setSupplyAllocations(&adjusted_supply_allocations);
-
+*/
 
 
 
